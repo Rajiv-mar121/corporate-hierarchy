@@ -1,2 +1,62 @@
-<p>employee works!</p>
-<h2>{{name}}</h2>
+<div class="container-sm">
+    <form [formGroup]="employeeForm">
+        <div class="mb-3">
+            <label for="empId" class="form-label">Employee Id</label>
+            <input type="text"  formControlName="empId" class="form-control" id="empid" aria-describedby="empid">
+            <div class="text-danger">
+                @if(employeeForm.controls['empId'].touched && employeeForm.controls['empId'].errors?.['required']){
+                    <span> This is required </span>
+                }                    
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <div class="text-danger">
+                @if(employeeForm.controls['email'].touched && employeeForm.controls['email'].errors?.['email']){
+                    <span> Imporper email address </span>
+                }                    
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="empName">
+        </div>
+        <div class="mb-3">
+            <label for="position" class="form-label">Position</label>
+            <input type="text" formControlName="position" class="form-control" id="position" aria-describedby="empid">
+        </div>
+
+        <div class="mb-3">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" formControlName="department" class="form-control" id="department" aria-describedby="department">
+        </div>
+        <div class="mb-3">
+            <label for="manager" class="form-label">Manager</label>
+            <input type="text" formControlName="manager" class="form-control" id="manager" aria-describedby="department">
+        </div>
+        <div class="mb-3">
+            <label for="reportingManager" class="form-label">Reporting Manager</label>
+            <input type="text" formControlName="reportingManager" class="form-control" id="reportingManager" aria-describedby="department">
+        </div>
+        <div class="mb-3">
+            <label for="team" class="form-label">Team</label>
+            <input type="text" formControlName="team" class="form-control" id="manager" aria-describedby="department">
+        </div>
+       
+        
+        <button type="button" class="btn btn-primary" [disabled]="employeeForm.invalid" (click)="onSubmit()">Submit</button>
+        <button type="submit" class="btn btn-primary">Cancel</button>
+    </form>
+</div>
+{{formValue | json}}
+<div class="col-3">
+    <select class="form-select">
+        @for (item of userData; track $index) {
+            <option>{{item.name}}</option>
+        }
+
+    </select>
+
+
+</div>
