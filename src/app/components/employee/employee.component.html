@@ -35,7 +35,7 @@
                                 aria-describedby="empName">
                         </div>
                         <div class="mb-3">
-                            <label for="position" class="form-label">Position</label>
+                            <label for="position" class="form-label">Designation</label>
                             <input type="text" formControlName="position" class="form-control" id="position"
                                 aria-describedby="empid">
                         </div>
@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Reset</button>
+                            <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button>
                             <button type="button" class="btn btn-success" [disabled]="employeeForm.invalid"
                                 (click)="onSubmit()">Submit</button>
 
@@ -73,6 +73,23 @@
         </div>
     </div>
 </div>
+<hr>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label for="formFileSm" class="form-label">Please upload csv file </label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file">
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button>
+            <button type="button" class="btn btn-success" [disabled]="employeeForm.invalid"
+                (click)="onSubmit()">Submit</button>
+
+        </div>
+    </div>
+</div>
+
 {{formValue | json}}
 <div class="col-3">
     <select class="form-select">

@@ -51,4 +51,8 @@ export class EmployeeComponent {
 
   }
 
+  reset(){
+    this.employeeForm.reset();
+  }
+
 }
