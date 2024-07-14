@@ -51,17 +51,9 @@ export class EmployeeComponent {
       this.reset();
       this.loadEmployees();
     })
-    // this.employeeService.getAllEmployee().subscribe((res:Employee[])=>{
-    //   this.employeeData = res;
-
-    // })
-    // this.httpClient.get("https://jsonplaceholder.typicode.com/users").subscribe((res:any)=>{
-    //   
-
-    // })
-    // make service call to save 
-
   }
+
+
   loadEmployees() {
     this.employeeService.getAllEmployee().subscribe((res: Employee[]) => {
       this.employeeData = res;
@@ -72,6 +64,7 @@ export class EmployeeComponent {
   reset() {
     this.employeeForm.reset();
   }
+  
   showEmployeeForm() {
     this.showAddEmployeeForm = !this.showAddEmployeeForm;
   }
