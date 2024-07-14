@@ -21,16 +21,16 @@ export class EmployeeComponent {
   constructor(private router: Router, private httpClient: HttpClient, private employeeService: EmployeeService) {
 
   }
-
+//empId: new FormControl("", [Validators.required, Validators.required]),
   formValue: any;
   employeeForm: FormGroup = new FormGroup({
-    empId: new FormControl("", [Validators.required, Validators.required]),
+    
     email: new FormControl("", [Validators.required, Validators.required,Validators.email]),
     name: new FormControl("", [Validators.required, Validators.required, Validators.minLength(3)]),
-    position: new FormControl(""),
+    designation: new FormControl(""),
     department: new FormControl(""),
-    manager: new FormControl(""),
-    reportingManager: new FormControl(""),
+    manager_id: new FormControl(0),
+   // manager_name: new FormControl(""),
     team: new FormControl(""),
   });
 
@@ -39,6 +39,10 @@ export class EmployeeComponent {
   }
   onSubmit() {
     this.formValue = this.employeeForm.value;
+    this.employeeService.addEmployee( this.formValue).subscribe((res:any)=>{
+      console.log("User added");
+      this.reset();
+    })
     this.employeeService.getAllEmployee().subscribe((res:any)=>{
       this.userData = res;
 

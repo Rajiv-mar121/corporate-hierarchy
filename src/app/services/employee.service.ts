@@ -10,7 +10,12 @@ export class EmployeeService {
   constructor(private httpClient: HttpClient) { }
 
   getAllEmployee():Observable<any>{
-    return this.httpClient.get("https://jsonplaceholder.typicode.com/users");
+    //https://jsonplaceholder.typicode.com/users
+    return this.httpClient.get("/api/employees");
+  }
+
+  addEmployee(employeePayload: any){
+    return this.httpClient.post("/api/employees",employeePayload);
   }
 
   getEmployeeById(empId: string){}

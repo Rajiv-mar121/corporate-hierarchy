@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-body">
                     <form [formGroup]="employeeForm">
-                        <div class="mb-3">
+                        <!-- <div class="mb-3">
                             <label for="empId" class="form-label">Employee Id</label>
                             <input type="text" formControlName="empId" class="form-control" id="empid"
                                 aria-describedby="empid">
@@ -17,7 +17,7 @@
                                 <span> This is required </span>
                                 }
                             </div>
-                        </div>
+                        </div> -->
                         <div class="mb-3">
                             <label for="email" class="form-label">Email address</label>
                             <input type="email" formControlName="email" class="form-control" id="email"
@@ -35,9 +35,9 @@
                                 aria-describedby="empName">
                         </div>
                         <div class="mb-3">
-                            <label for="position" class="form-label">Designation</label>
-                            <input type="text" formControlName="position" class="form-control" id="position"
-                                aria-describedby="empid">
+                            <label for="designation" class="form-label">Designation</label>
+                            <input type="text" formControlName="designation" class="form-control" id="designation"
+                                aria-describedby="designation">
                         </div>
 
                         <div class="mb-3">
@@ -45,16 +45,17 @@
                             <input type="text" formControlName="department" class="form-control" id="department"
                                 aria-describedby="department">
                         </div>
+                        <!-- <div class="mb-3">
+                            <label for="manager_name" class="form-label">Manager Name</label>
+                            <input type="text" formControlName="manager_name" class="form-control"
+                                id="manager_name" aria-describedby="department">
+                        </div> -->
                         <div class="mb-3">
-                            <label for="manager" class="form-label">Manager</label>
-                            <input type="text" formControlName="manager" class="form-control" id="manager"
-                                aria-describedby="department">
+                            <label for="manager_id" class="form-label">Manager Id</label>
+                            <input type="text" formControlName="manager_id" class="form-control" id="manager_id"
+                                aria-describedby="manager_id">
                         </div>
-                        <div class="mb-3">
-                            <label for="reportingManager" class="form-label">Reporting Manager</label>
-                            <input type="text" formControlName="reportingManager" class="form-control"
-                                id="reportingManager" aria-describedby="department">
-                        </div>
+                        
                         <div class="mb-3">
                             <label for="team" class="form-label">Team</label>
                             <input type="text" formControlName="team" class="form-control" id="manager"
@@ -98,4 +99,15 @@
         }
 
     </select>
+
+    <div >
+        @for (employee of userData; track $index) {
+        <h3>{{ employee.name }}</h3>
+        <p><strong>Designation:</strong> {{ employee.designation }}</p>
+        <p><strong>Email:</strong> {{ employee.email }}</p>
+        <p><strong>Department:</strong> {{ employee.department }}</p>
+        <p><strong>Team:</strong> {{ employee.team }}</p>
+        <!-- <p *ngIf="employee.manager_name"><strong>Manager:</strong> {{ employee.manager_name }}</p> -->
+        }
+      </div>
 </div>

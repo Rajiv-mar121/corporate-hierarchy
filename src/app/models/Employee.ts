@@ -1,15 +1,14 @@
 export class Employee {
-    empId: string;
+    id?: number;
     name: string;
+    designation?: string;
     email?: string;
-    position?: string;
     department?: string;
-    manager?: string;
-    reprting?: string;
     team?: string;
-
+    manager_id?: string;
+    manager_name?: string;
+   
     constructor() {
-        this.empId = "";
         this.name = " "
     }
 }
