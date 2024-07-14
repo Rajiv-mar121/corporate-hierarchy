@@ -1,5 +1,48 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">All Existing Employees Details</h4>
+            </div>
+        <table>
+            <thead >
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Team</th>
+                <th>Manager ID</th>
+                <th>Manager Name</th>
+              </tr>
+            </thead>
+            <tbody>
+                @for (employee of employeeData; track $index) {
+                    <tr>
+                        <td>{{ employee.id }}</td>
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.designation }}</td>
+                        <td>{{ employee.email }}</td>
+                        <td>{{ employee.department }}</td>
+                        <td>{{ employee.team }}</td>
+                        <td>{{ employee.manager_id }}</td>
+                        <td>{{ employee.manager_name }}</td>
+                      </tr>
+                }
+              
+            </tbody>
+          </table>
+        </div> 
+    </div>  
+
+</div>
+
+
+<div class="container mt-5">
+    <button type="button" class="btn btn-success" 
+                (click)="showEmployeeForm()">Add Employee</button>
+    <div   *ngIf="showAddEmployeeForm" class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -94,20 +137,9 @@
 {{formValue | json}}
 <div class="col-3">
     <select class="form-select">
-        @for (item of userData; track $index) {
+        @for (item of employeeData; track $index) {
         <option>{{item.name}}</option>
         }
 
     </select>
-
-    <div >
-        @for (employee of userData; track $index) {
-        <h3>{{ employee.name }}</h3>
-        <p><strong>Designation:</strong> {{ employee.designation }}</p>
-        <p><strong>Email:</strong> {{ employee.email }}</p>
-        <p><strong>Department:</strong> {{ employee.department }}</p>
-        <p><strong>Team:</strong> {{ employee.team }}</p>
-        <!-- <p *ngIf="employee.manager_name"><strong>Manager:</strong> {{ employee.manager_name }}</p> -->
-        }
-      </div>
 </div>

@@ -7,7 +7,7 @@ export class Employee {
     team?: string;
     manager_id?: string;
     manager_name?: string;
-   
+
     constructor() {
         this.name = " "
     }

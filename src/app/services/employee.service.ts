@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Employee } from '../models/Employee';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,9 @@ export class EmployeeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllEmployee():Observable<any>{
+  getAllEmployee():Observable<Employee[]>{
     //https://jsonplaceholder.typicode.com/users
-    return this.httpClient.get("/api/employees");
+    return this.httpClient.get<Employee[]>("/api/employees");
   }
 
   addEmployee(employeePayload: any){
