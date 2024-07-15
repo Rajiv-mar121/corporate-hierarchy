@@ -1,4 +1,4 @@
-import { AsyncPipe, CommonModule, DatePipe, JsonPipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
+import { AsyncPipe, CommonModule, DatePipe, JsonPipe, NgOptimizedImage, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Form, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -62,7 +62,7 @@ export class EmployeeComponent {
 
     }, error => {
       console.error('Unable to load employee', error);
-      alert('Unable to load');
+    //  alert('Unable to load');
     })
   }
 
