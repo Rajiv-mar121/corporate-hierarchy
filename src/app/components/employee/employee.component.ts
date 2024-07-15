@@ -19,6 +19,8 @@ export class EmployeeComponent {
   name: string = "Raijv";
   employeeData: Employee[] = [];
   showAddEmployeeForm: boolean = false;
+  showKGraph: boolean = false;
+  selectedFile: File | null = null;
 
   constructor(private router: Router, private httpClient: HttpClient, private employeeService: EmployeeService) {
 
@@ -58,15 +60,54 @@ export class EmployeeComponent {
     this.employeeService.getAllEmployee().subscribe((res: Employee[]) => {
       this.employeeData = res;
 
+    }, error => {
+      console.error('Unable to load employee', error);
+      alert('Unable to load');
     })
   }
 
   reset() {
     this.employeeForm.reset();
   }
-  
+
   showEmployeeForm() {
     this.showAddEmployeeForm = !this.showAddEmployeeForm;
   }
+
+  showGraph(){
+    console.log("show graph")
+    this.showKGraph = !this.showKGraph;
+  }
+
+  onFileSelected(event: any): void {
+    const file: File = event.target.files[0];
+    if (file && file.type === 'text/csv') {
+      this.selectedFile = file;
+    } else {
+      alert('Please select a valid CSV file.');
+    }
+  }
+
+  onUpload(): void {
+    if (!this.selectedFile) {
+      alert('No file selected.');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('file', this.selectedFile, this.selectedFile.name);
+    // make api call
+
+    this.employeeService.uploadCSV(formData).subscribe((res: any) => {
+      console.log('Upload success', res);
+      alert('File uploaded successfully.');
+    },
+      error => {
+        console.error('Upload error', error);
+        alert('File upload failed.');
+      }
+    )    
+  }
+
+  
 
 }

@@ -1,4 +1,16 @@
 <div class="container mt-5">
+    <div class="visual justify-content-center">
+        <button type="button" class="btn btn-success" 
+                (click)="showGraph()">Visualize Knowledge graph </button>
+    </div>
+    
+    <div *ngIf="showKGraph" class="card" style="width: 18rem;">
+        <img src="knowledge_graph.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+    
     <div class="row justify-content-center">
         <div class="card">
             <div class="card-header">
@@ -50,6 +62,13 @@
                 </div>
                 <div class="card-body">
                     <form [formGroup]="employeeForm">
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" formControlName="name" class="form-control" id="name"
+                                aria-describedby="empName">
+                        </div>
+
                         <!-- <div class="mb-3">
                             <label for="empId" class="form-label">Employee Id</label>
                             <input type="text" formControlName="empId" class="form-control" id="empid"
@@ -72,11 +91,7 @@
                                 }
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" formControlName="name" class="form-control" id="name"
-                                aria-describedby="empName">
-                        </div>
+                        
                         <div class="mb-3">
                             <label for="designation" class="form-label">Designation</label>
                             <input type="text" formControlName="designation" class="form-control" id="designation"
@@ -122,13 +137,13 @@
     <div class="col-md-6">
         <div class="mb-3">
             <label for="formFileSm" class="form-label">Please upload csv file </label>
-            <input class="form-control form-control-sm" id="formFileSm" type="file">
+            <input type="file" class="form-control form-control-sm" id="formFileSm" (change)="onFileSelected($event)" accept=".csv">
         </div>
 
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary" (click)="reset()">Reset</button>
             <button type="button" class="btn btn-success" [disabled]="employeeForm.invalid"
-                (click)="onSubmit()">Submit</button>
+                (click)="onUpload()">Upload</button>
 
         </div>
     </div>

@@ -19,5 +19,10 @@ export class EmployeeService {
     return this.httpClient.post("/api/employees",employeePayload);
   }
 
+  uploadCSV(csvfileData :any){
+    return this.httpClient.post("/api/employees/upload",csvfileData);
+  }
+
+
   getEmployeeById(empId: string){}
 }
